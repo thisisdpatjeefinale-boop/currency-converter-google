@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Smart FX Desk</p>
+          <h1>Real-time currency conversions powered by Google</h1>
+          <p class="lead">
+            Compare over 150 world currencies, watch spreads, and pin your favorite pairs.
+            Live rates refresh automatically from Google Finance every minute.
+          </p>
+        </div>
+        <div class="hero-addon">
+          <p class="hero-value" id="heroRate">1 USD = —</p>
+          <p class="hero-label">Live headline rate</p>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card converter" aria-label="Currency converter">
+          <div class="control-group">
+            <label for="currencyFrom">From</label>
+            <select id="currencyFrom"></select>
+            <input type="number" id="amountFrom" min="0" step="0.01" value="1" aria-label="Amount from" />
+          </div>
+
+          <button id="swapButton" class="swap" aria-label="Swap currencies">⇅ Swap</button>
+
+          <div class="control-group">
+            <label for="currencyTo">To</label>
+            <select id="currencyTo"></select>
+            <input type="number" id="amountTo" min="0" step="0.01" value="" aria-label="Amount to" />
+          </div>
+
+          <p class="rate-label" id="rateLabel">Fetching rate…</p>
+          <p class="timestamp" id="timestampLabel"></p>
+        </section>
+
+        <section class="card favorites" aria-label="Favorite pairs">
+          <div class="card-header">
+            <h2>Starred pairs</h2>
+            <button id="addFavorite" class="ghost">☆ Save current pair</button>
+          </div>
+          <div id="favoriteList" class="pill-list"></div>
+        </section>
+
+        <section class="card history" aria-label="Recent conversions">
+          <div class="card-header">
+            <h2>Recent conversions</h2>
+            <button id="clearHistory" class="ghost">Clear</button>
+          </div>
+          <ul id="historyList"></ul>
+        </section>
+      </main>
+    </div>
+
+    <template id="favoriteTemplate">
+      <button class="pill"></button>
+    </template>
+
+    <template id="historyItemTemplate">
+      <li>
+        <span class="history-pair"></span>
+        <span class="history-rate"></span>
+        <span class="history-time"></span>
+      </li>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
